@@ -7,4 +7,8 @@
     <RootNamespace>web_prog</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="9.0.3" />
+  </ItemGroup>
+
 </Project>
