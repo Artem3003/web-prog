@@ -1,14 +1,11 @@
 # web-prog
 
-1. Отже, спочатку я створив проєкт на основі asp.net core minimal api, котра просто виводила прізвище, ім'я та групу. 
-2. Далі я стоврив конфігурацію в appsettings.json котра налаштовує веб-сервер kestrel та в Program.cs виконує його.
-![](./images/appsettings.jpg)
-3. Далі за допомогою mkcert згенерував сертифікат
-![](./images/certificate.jpg)
-4. У wireshark можна спостерігати трафік який проходить 
-![](./images/tls_trafic.jpg)
-5. Додав ключ у wireshark
-![](./images/key.jpg)
-6. Нажаль я не зміг змінити cipher suite на TLS_RSA_WITH_AES_CBC_SHA256, або TLS_RSA_WITH_AES_256_CBC_SHA, в мене був більш захищений - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384.
-![](./images/cipher_suite.jpg)
-7. Погугливши я знайшов інформацію про те що немає змоги змінити це у asp.net core dotnet 9
+1. Отже, для виправлення минулої версії роботи я застосував докер на Linux, так як я знайшов інформацію, що саме через Windows я не мав змоги застосувати саме протокол TLS_RSA_WITH_AES_CBC_SHA256, який менш захищений, але в докері цей протокол зміг запрацювати, як ми бачимо на скріні
+![](./images/correct_protocol.png)
+2. Також я застосував dotnet 6 на всякий випадок, але на мою думку це пов'язано не з цим
+![](./images/dotnet_version.png)
+3. Ось код який примусово допомагає саме в linux застосовувати протокол який нам потрібно
+![](./images/code.png)
+4. Ось можемо бачити результат розшифрованого respond 
+![](./images/result_wireshark.png)
+![](./images/result_yurchenko.png)
